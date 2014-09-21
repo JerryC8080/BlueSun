@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Blue Sun</title>
+    <style>
+        /* Blog Articles Template */
+        .article_title{
+            padding: 50px 20px 10px;
+            font-size: 30px;
+            font-weight: 400;
+
+            text-align: center;
+        }
+        .article_info >*{
+            display: inline;
+        }
+        .article_info{
+            color: #666;
+            display: block;
+            text-align: center;
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 20px;
+        }
+        .article_content{
+            padding: 40px 40px 50px
+        }
+    </style>
+</head>
+<body>
+<div class="article_title"> 图片尺寸与可视范围的关系</div>
+<div class="article_info">
+    <div class="article_info_date">时间：<span> 2014-9-16 15:46</span></div>
+    <div class="article_info_author">作者：<span> JerryC</span></div>
+</div>
+<div class="article_content">
+    <p style="text-indent:2em;color:#444444;font-family:'Microsoft Yahei';font-size:14px;background-color:#FFFFFF;">
+	近来一直有小伙伴问到和背景图相关的问题，鉴于这帮家伙对小剧客栈大hen气low背景图的视而不见，今天我就来说说和背景图相关的处理方式。
+</p>
+<p style="text-indent:2em;color:#444444;font-family:'Microsoft Yahei';font-size:14px;background-color:#FFFFFF;">
+	假设一张图的尺寸为150px × 100px，显示区域为500px × 400px，那么作为背景显示就会有下面三种基本情况（不考虑重复、位置等因素）。
+</p>
+<p style="text-align:center;text-indent:2em;color:#444444;font-family:'Microsoft Yahei';font-size:14px;background-color:#FFFFFF;">
+	<img src="http://asset.bh-lay.com/blog/background_and_view_size.jpg" alt="图片尺寸与可视范围的关系" title="" /> 
+</p>
+<p style="text-align:center;text-indent:2em;color:#444444;font-family:'Microsoft Yahei';font-size:14px;background-color:#FFFFFF;">
+	<br />
+</p>
+<p style="text-indent:2em;color:#444444;font-family:'Microsoft Yahei';font-size:14px;background-color:#FFFFFF;">
+	作为图片显示的三种基本方式，各自的特点如下。
+</p>
+<p style="text-indent:2em;color:#444444;font-family:'Microsoft Yahei';font-size:14px;background-color:#FFFFFF;">
+	<strong>normal</strong>：正常的显示方式，不缩放，常用来显示已知大小的icon或头像，可直接限定显示区域以呈现图片。
+</p>
+<p style="text-indent:2em;color:#444444;font-family:'Microsoft Yahei';font-size:14px;background-color:#FFFFFF;">
+	<strong>contain</strong>：在可视范围内完整显示图片，可视范围上下或左右两侧可能会有留白，用来展示需要表现图片细节的地方，如图片查看器。
+</p>
+<p style="text-indent:2em;color:#444444;font-family:'Microsoft Yahei';font-size:14px;background-color:#FFFFFF;">
+	<strong>cover</strong>：完全铺满可视范围，图片上下或左右两侧可能会有裁剪，常用来呈现比较大气的界面背景。
+</p>
+<hr />
+<hr />
+<h2 id="" style="font-weight:400;font-size:20px;color:#333333;font-family:'Microsoft Yahei';background-color:#FFFFFF;">
+	满屏效果的实现方式
+</h2>
+<p style="text-indent:2em;color:#444444;font-family:'Microsoft Yahei';font-size:14px;background-color:#FFFFFF;">
+	上面介绍了图片尺寸与可视范围的三种基本关系，这里说下满屏背景效果是如何实现的。
+</p>
+<p style="text-indent:2em;color:#444444;font-family:'Microsoft Yahei';font-size:14px;background-color:#FFFFFF;">
+	首先创建一个与窗口等宽高的可视范围，这个视页面结构自己来定，总之一点，建议独立一个层，为针对IE的平稳退化做准备。
+</p>
+<p style="text-indent:2em;color:#444444;font-family:'Microsoft Yahei';font-size:14px;background-color:#FFFFFF;">
+	实现起来，css3真是前端的一大福音，在背景的设置上，css3新增了一个叫做background-size的属性，当值为cover时，配合background-position：center、background-repeat：no-repeat便会有上图的效果（background-size还可以指定像素，百分比，这里不讨论）。
+</p>
+<p style="text-indent:2em;color:#444444;font-family:'Microsoft Yahei';font-size:14px;background-color:#FFFFFF;">
+	近两年来，WEB对IE6、7的态度几乎不会再妥协了，然而在目前还不能放弃的IE8上，只能通过JS+img去模拟满屏效果了，下面是计算位置和尺寸的方法。
+</p>
+<pre>function newSizeAndPosition(boxW,boxH,imgW,imgH){
+    //比较可视范围与图片的宽高比例
+    if(boxW/boxH &gt; imgW/imgH){
+        return {
+            'width':boxW,
+            'height':boxW*imgH/imgW,
+            'marginTop':-(boxW*imgH/imgW-boxH)/2,
+            'marginLeft':0
+        };
+    }else{
+        return {
+            'width':boxH*imgW/imgH,
+            'height':boxH,
+            'marginTop':0,
+            'marginLeft':-(boxH*imgW/imgH-boxW)/2
+        };
+    }
+}</pre>
+</div>
+</body>
+</html>

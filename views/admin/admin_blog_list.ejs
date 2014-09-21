@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- include admin_globalHeader.ejs%>
+</head>
+<body>
+<div class="panel panel-default ">
+    <h3 class="panel-heading">Blog Articles List</h3>
+    <div class="panel-body">
+        <!-- Table -->
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Create Time</th>
+                    <th>Update Time</th>
+                    <th>Operation</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% for(var i=0  ; i<articles.length ; i++){ %>
+                    <tr class="item" data-entityid='<%=articles[i]._id%>'>
+                        <td name="title"><%=articles[i].title%></td>
+                        <td name="author"><%=articles[i].author%></td>
+                        <td name="createTime"><%=articles[i].createTime.minute%></td>
+                        <td name="lastUpdateTime"><%=articles[i].lastUpdateTime.minute%></td>
+                        <td name="brief" style="display: none"><%=articles[i].brief%></td>
+                        <td name="content" style="display: none"><%=articles[i].content%></td>
+                        <td class="button">
+                            <button type="button" class="modify-btn btn btn-success">修改</button>
+                            <button type="button" class="delete-btn btn btn-danger">删除</button>
+                        </td>
+                    </tr>
+                <% }%>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">修改</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" id="modifyFrom" data-entityid="">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" id="title" name="title" placeholder="title">
+                    </div>
+                    <div class="form-group">
+                        <label for="author">Author</label>
+                        <input type="text" class="form-control" id="author" name="author" placeholder="author">
+                    </div>
+                    <div class="form-group">
+                        <label for="brief">Brief</label>
+                        <input type="text" class="form-control" id="brief" name="brief" placeholder="brief">
+                    </div>
+                    <div class="form-group">
+                        <label for="content">Content</label>
+                        <textarea type="text" id="content" name="content" style="width:100%;"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" onclick="modifyEntity();">保存</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+</body>
+<script type="text/javascript">
+    //按钮动作
+    $(function(){
+        //查询修改
+        $(".modify-btn").click(function(event) {
+            var entityid = $(this).parent().parent().attr('data-entityid');
+            $("#modifyFrom").attr("data-entityid",entityid);
+            setDataToFrom(entityid); //初始化数据到from
+            $('#myModal').modal();
+        });
+        //删除
+        $(".delete-btn").click(function(event) {
+            var entityid = $(this).parent().parent().attr('data-entityid');
+            var result=confirm("确定要删除?");
+            if(result) deleteEntity(entityid);
+        });
+    });
+
+    //展示信息的异步请求
+    function setDataToFrom(entityid){
+        var entity = $('tr[data-entityid='+entityid+']');
+        $("#title").val(entity.find('td[name=title]').text());
+        $("#author").val(entity.find('td[name=author]').text());
+        $("#brief").val(entity.find('td[name=brief]').text());
+        editor.html(entity.find('td[name=content]').text());
+    }
+
+    //修改信息的异步请求
+    function modifyEntity(){
+        $.ajax({
+            url: 'admin_blog_modify',
+            type: 'post',
+            dataType: 'json',
+            data: {
+                id:$("#modifyFrom").attr("data-entityid"),
+                title: $("#title").val(),
+                author: $("#author").val(),
+                brief: $("#brief").val(),
+                content: editor.html()
+            },
+            success:function(data){
+                console.log("success");
+                alert("更新成功");
+                location.reload();
+            },
+            error:(function() {
+                console.log("error");
+                alert("更新失败");
+                location.reload();
+            })
+        });
+    }
+
+    //删除信息的异步请求
+    function deleteEntity(entityid){
+        $.ajax({
+            url: 'admin_blog_delete',
+            type: 'post',
+            dataType: 'json',
+            data: {
+                id: entityid
+            },
+            success: function(){
+                console.log("success");
+                alert("删除成功");
+                location.reload();
+            },
+            error:(function() {
+                console.log("error");
+                alert("删除失败");
+            })
+        });
+    }
+</script>
+
+</html>

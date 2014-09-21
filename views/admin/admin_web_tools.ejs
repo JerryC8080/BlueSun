@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- include admin_globalHeader.ejs%>
+</head>
+<body>
+<div class="panel panel-default ">
+    <h3 class="panel-heading">Tools Item</h3>
+    <!-- Table -->
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Describe</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>Blog Static</td>
+                <td>change the blog articles to html , then save</td>
+                <td class="button">
+                    <button type="button" class="modify-btn btn btn-success" onclick="javascript:staticize('admin_blog_articles_staticize');">Excute</button>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Notes Static</td>
+                <td>change the Notes articles to html , then save</td>
+                <td class="button">
+                    <button type="button" class="modify-btn btn btn-success" onclick="javascript:staticize('admin_notes_articles_staticize');">Excute</button>
+                </td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Blog Data Create</td>
+                <td>push blog articles data into a js file</td>
+                <td class="button">
+                    <button type="button" class="modify-btn btn btn-success" onclick="javascript:staticize('admin_blog_data_create');">Excute</button>
+                </td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Notes Data Create</td>
+                <td>push Notes articles data into a js file</td>
+                <td class="button">
+                    <button type="button" class="modify-btn btn btn-success" onclick="javascript:staticize('admin_notes_data_create');">Excute</button>
+                </td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Index Staticize</td>
+                <td>create index.html</td>
+                <td class="button">
+                    <button type="button" class="modify-btn btn btn-success" onclick="javascript:staticize('admin_index_staticize');">Excute</button>
+                </td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Blog Staticize</td>
+                <td>create blog.html</td>
+                <td class="button">
+                    <button type="button" class="modify-btn btn btn-success" onclick="javascript:staticize('admin_blog_staticize');">Excute</button>
+                </td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>Lab Staticize</td>
+                <td>create lab.html</td>
+                <td class="button">
+                    <button type="button" class="modify-btn btn btn-success" onclick="javascript:staticize('admin_lab_staticize');">Excute</button>
+                </td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>Notes Staticize</td>
+                <td>create notes.html</td>
+                <td class="button">
+                    <button type="button" class="modify-btn btn btn-success" onclick="javascript:staticize('admin_notes_staticize');">Excute</button>
+                </td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>Only One Key</td>
+                <td>There is no limit, all stations generate HTML</td>
+                <td class="button">
+                    <button disabled=disabled type="button" class="modify-btn btn btn-danger" onclick="javascript:void(0);">Excute</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+<script>
+function staticize(url){
+    $.ajax({
+        url:url,
+        type:'post',
+        dataType:'json',
+        data:{},
+        success:function(data){
+            if(data == 'success') alert('操作成功');
+            else alert('操作失败');
+        }
+    });
+}
+</script>
+</html>

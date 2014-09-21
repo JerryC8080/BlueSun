@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- include admin_globalHeader.ejs%>
+</head>
+<body>
+<div class="header page-header">
+    <h1>BlueSun——管理员后台<small>BlueSun Admin Managerment System</small></h1>
+    <article>
+        <% if(success){ %>
+        <div><%=success%></div>
+        <% } %>
+        <% if(error){ %>
+        <div><%=error%></div>
+        <% } %>
+    </article>
+</div>
+<div id="main">
+    <div class="left panel panel-default col-md-3">
+        <h3 class="panel-heading">
+            Management Of Type
+            <button type="button" class="btn btn-danger btn-sm " style="float: right;">
+                <a href="logout" style="text-decoration: none;color:white">
+                    <span class="glyphicon glyphicon-off"></span>
+                </a>
+            </button>
+        </h3>
+        <div class="panel-group panel-body" id="accordion">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h4 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                        <span >Blog Management</span>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in">
+                    <ul class="nav nav-pills nav-stacked panel-body">
+                        <li><a href="admin_blog_add" target="iFrame">Add Article</a></li>
+                        <li><a href="admin_blog_list" target="iFrame">Article List</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h4 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                        <span >Lab Management</span>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse">
+                    <ul class="nav nav-pills nav-stacked panel-body">
+                        <li><a href="admin_lab_add" target="iFrame">Add Project</a></li>
+                        <li><a href="admin_lab_list" target="iFrame">Project List</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h4 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                        <span >Notes Management</span>
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse">
+                    <ul class="nav nav-pills nav-stacked panel-body">
+                        <li><a href="admin_note_add" target="iFrame">Add Note</a></li>
+                        <li><a href="admin_note_list" target="iFrame">Notes List</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h4 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                        <span >Web Management</span>
+                    </h4>
+                </div>
+                <div id="collapseFour" class="panel-collapse collapse">
+                    <ul class="nav nav-pills nav-stacked panel-body">
+                        <li><a href="admin_web_tools" target="iFrame">Web Tools</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-1" style="max-width:30px"></div>
+    <div class="right col-md-8">
+        <iframe name="iFrame" id="iFrame" frameborder="0" src="/JerryC_admin/admin_right"></iframe>
+    </div>
+</div>
+</body>
+</html>

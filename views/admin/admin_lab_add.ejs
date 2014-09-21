@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- include admin_globalHeader.ejs%>
+</head>
+<body>
+<div class="panel panel-default ">
+    <h3 class="panel-heading">Add Lab Article</h3>
+    <div class="panel-body">
+        <form class="form-horizontal" role="form" id="addForm" method="post">
+            <div class="form-group">
+                <label for="title" class="col-sm-2 control-label">Title</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="title" id="title" placeholder="title" value="">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="author" class="col-sm-2 control-label">Author</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="author" id="author" placeholder="JerryC" value="JerryC">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="brief" class="col-sm-2 control-label">Brief</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="brief" id="brief" placeholder="brief" value="">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="url" class="col-sm-2 control-label">Url</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="url" id="url" placeholder="url" value="">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="imgUrl" class="col-sm-2 control-label">ImgUrl</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="imgUrl" id="imgUrl" placeholder="imgUrl" value="">
+                </div>
+            </div>
+            <div class="btn-group pull-right" style="margin-top:30px;">
+                <button type="reset" class="btn btn-default" data-dismiss="modal">重置</button>
+                <button type="button" class="btn btn-primary" onclick="$('#addForm').submit();">添加</button>
+            </div>
+    </div>
+</div>
+</body>
+</html>

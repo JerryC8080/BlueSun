@@ -1,0 +1,101 @@
+@charset "UTF-8";
+
+@media screen and (max-width:1960px) {
+    .labList {
+        width:1600px;
+    }
+}
+@media screen and (max-width:1640px) {
+    .labList {
+        width:1280px;
+    }
+}
+@media screen and (max-width:1320px) {
+    .labList {
+        width:960px;
+    }
+}
+@media screen and (max-width:1000px) {
+    .labList {
+        width:640px;
+    }
+    .articleItem_label{
+        display: none;
+    }
+    #nav{
+        display: none;
+    }
+    #nav_arc>ul {
+        z-index:100;
+        position:fixed;
+        right:20px;
+        bottom:20px;
+        width:70px;
+        height:70px;
+        line-height:40px;
+        list-style-type:none;
+        marign:0;
+        padding:0;
+        text-align:center;
+        color:#FFF;
+        cursor:pointer;
+    }
+    #nav_arc>ul>li, #nav_arc>ul:after {
+        position:absolute;
+        left:0;
+        top:0;
+        width:100%;
+        height:100%;
+        border-radius:50%;
+        background-color:darkgray;
+        background-size: 65%;
+        background-position:center;
+        background-repeat: no-repeat;
+    }
+    #nav_arc>ul>li {
+        transition:all .5s;
+    }
+    #nav_arc>ul:after {
+        content:'';
+        z-index:1;
+        position: absolute;
+        background-size: 85%;
+        background-color:darkgray;
+        background-image: url("../images/arc_menu.png");
+    }
+    #nav_arc ul {
+        border-radius:50%;
+        z-index:101;
+    }
+    #nav_arc li.arc_home {
+        background-image: url("../images/arc_home.png");
+    }
+    #nav_arc li.arc_blog {
+        background-image: url("../images/arc_blog.png");
+    }
+    #nav_arc li.arc_notes {
+        background-image: url("../images/arc_notes.png");
+    }
+    #nav_arc li.arc_lab {
+        background-image: url("../images/arc_lab.png");
+    }
+    #nav_arc li.arc_me {
+        background-image: url("../images/arc_me.png");
+    }
+    #nav_arc a{
+        height: 100%;
+        width: 100%;
+        display: block;
+    }
+}
+
+@media screen and (max-width:794px){
+    .articleList{
+        width: auto;
+    }
+}
+@media screen and (max-width:680px) {
+    .labList {
+        width:320px;
+    }
+}

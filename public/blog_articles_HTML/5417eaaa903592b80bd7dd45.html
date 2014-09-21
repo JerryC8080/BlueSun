@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Blue Sun</title>
+    <style>
+        /* Blog Articles Template */
+        .article_title{
+            padding: 50px 20px 10px;
+            font-size: 30px;
+            font-weight: 400;
+
+            text-align: center;
+        }
+        .article_info >*{
+            display: inline;
+        }
+        .article_info{
+            color: #666;
+            display: block;
+            text-align: center;
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 20px;
+        }
+        .article_content{
+            padding: 40px 40px 50px
+        }
+    </style>
+</head>
+<body>
+<div class="article_title"> web设计中的过场动画</div>
+<div class="article_info">
+    <div class="article_info_date">时间：<span> 2014-9-16 15:45</span></div>
+    <div class="article_info_author">作者：<span> JerryC</span></div>
+</div>
+<div class="article_content">
+    <p style="text-indent:2em;color:#444444;font-family:'Microsoft Yahei';font-size:14px;background-color:#FFFFFF;">
+	智能手机的界面设计和软件设计中，充斥着各类酷炫的过场动画。所谓过场动画，指的是两个界面相互切换时，通过特效来增加产品的趣味性的设计。
+</p>
+<p style="text-indent:2em;color:#444444;font-family:'Microsoft Yahei';font-size:14px;background-color:#FFFFFF;">
+	然而web的界面通常是一个个独立的页面，在页面相互切换时，浏览器的处理过程多数为凝固当前界面为不可操作状态，直接渲染第二个页面。性能较差的浏览器甚至会在凝固界面后新界面展示前，出现一个白屏画面的过程，整体体验较为突兀。
+</p>
+<p style="text-indent:2em;color:#444444;font-family:'Microsoft Yahei';font-size:14px;background-color:#FFFFFF;">
+	受限于页面间的跳转效果在程序上不可控，因此在web设计上，很少会提到“过场”的概念。
+</p>
+<p style="text-indent:2em;color:#444444;font-family:'Microsoft Yahei';font-size:14px;background-color:#FFFFFF;">
+	可能说到这儿，会略微显得“过场动画”太高大上了，对于我等屌丝来说是非常奢侈的事情。
+</p>
+<p style="text-indent:2em;color:#444444;font-family:'Microsoft Yahei';font-size:14px;background-color:#FFFFFF;">
+	且慢，随着移动web app的开发体验越来越接近原生移动端体验的今天，过场再也不是遥不可及的女神了。在单页面(<a href="http://bh-lay.com/blog/146b8ac7d9f">和单页面相关的解释</a>)的设计中，可以很容易的实现过场的设计。
+</p>
+<p style="text-indent:2em;color:#444444;font-family:'Microsoft Yahei';font-size:14px;background-color:#FFFFFF;">
+	至于单页面是什么，我个人的理解是：兼顾访问进度与无刷新的交互设计。如果你需要体验下这类效果，可以自备梯子去下facebook或者google+，翻不了墙的话也可以尝试看下<a href="http://bh-lay.com/">我的个人博客</a>。
+</p>
+<p style="text-indent:2em;color:#444444;font-family:'Microsoft Yahei';font-size:14px;background-color:#FFFFFF;">
+	当然，单页面这个概念只是今天我提到过场动画在web设计中的一个技术基础，下面说说web设计上常用的几种切换方式（不完整，仅作为抛砖引玉）。
+</p>
+</div>
+</body>
+</html>

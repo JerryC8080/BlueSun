@@ -1,0 +1,50 @@
+<%- include header.ejs%>
+<div id="main">
+    <div class="articleList">
+        <% for(var i = 0 ; i < articles.length ; i++){ %>
+            <% var dateArray = articles[i].createTime.day.toString().split('-'); %>
+            <div class="articleItem" data-entityId="<%=articles[i]._id%>">
+                <div class="articleItem_label">
+                    <div class="articleItem_label_date">
+                        <%=dateArray[2]%>
+                    </div>
+                    <div class="articleItem_label_monthYear"><%=dateArray[1]%>/<%=dateArray[0]%></div>
+                </div>
+                <div class="articleItem_title"><%=articles[i].title%></div>
+                <div class="articleItem_content">
+                    <%-articles[i].brief%>
+                </div>
+            </div>
+        <% }%>
+    </div>
+    <div class="blog_addMore">
+        <a href="javascript:void(0)">加载更多</a>
+        <span>正在加载……</span>
+    </div>
+</div>
+<div id="article">
+    <div class="closeBtn" onclick="javascript:$('#article').mask('close');"></div>
+    <iframe src="" width="100%" height="100%"></iframe>
+</div>
+<script type="text/javascript" charset="utf-8" src="data/blogArticles.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/rewrite-data.js"></script>
+<script>
+
+    $(function(){
+        bindCilckEvent();   /* Blog Articles Iframe */
+        window.rewriteData.init('blogArticles','blog_articles_HTML');    /* Rewrite Data Init */
+    });
+
+    function bindCilckEvent(){
+        $('.articleItem').click(function(){
+            var iframe = $('#article iframe');
+            var articleItem = $(this);
+            if(iframe && articleItem){
+                var entityId = articleItem.attr('data-entityId');
+                iframe.attr('src','blog_articles_HTML/'+entityId+'.html');
+            }
+        });
+    }
+</script>
+
+<%- include footer.ejs%>

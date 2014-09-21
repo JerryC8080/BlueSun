@@ -1,0 +1,69 @@
+@charset "UTF-8";
+
+.labList{
+    padding: 100px 0px;
+    margin: auto;
+}
+.lab_item{
+    float: left;
+    width: 300px;
+    height: 440px;
+    margin: 0 10px 20px;
+    background-color: #ffffff;
+    overflow: hidden;
+}
+.lab_item_img{
+    height: 300px;
+    width: 100%;
+    transition: .2s;
+    -moz-transition-duration: .2s;
+    -webkit-transition-duration: .2s;
+    -o-transition-duration: .2s;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #666;
+    background-image: url("../images/lofox.jpg");
+}
+.lab_item_img > a {
+    height: 100%;
+    width: 100%;
+    display: block;
+}
+.lab_item_img:hover{
+    opacity: .8;
+}
+.lab_item_title{
+    font-weight: 400;
+    line-height: 30px;
+    color: #333;
+    font-size: 20px;
+    text-align: center;
+}
+.lab_item_title a{
+    display: block;
+    padding: 10px;
+    border-bottom: 1px dashed #eee;
+    transition: .2s;
+    -moz-transition-duration: .2s;
+    -webkit-transition-duration: .2s;
+    -o-transition-duration: .2s;
+}
+.lab_item_title a:hover{
+    border-bottom-style: solid;
+    background: #eee;
+    color: #0a4;
+}
+.lab_item_info{
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.lab_item_info p {
+    color: #333;
+    font-size: 12px;
+    opacity: .7;
+    line-height: 16px;
+    text-indent: 2em;
+    text-align: justify;
+}

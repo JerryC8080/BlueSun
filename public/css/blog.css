@@ -1,0 +1,116 @@
+@charset "UTF-8";
+
+.articleList{
+    width: 794px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.articleItem{
+    max-width: 780px;
+    min-width: 320px;
+    max-height:500px;
+    background-color: whitesmoke;
+    border:7px solid steelblue;
+    position: relative;
+    margin-bottom: 20px;
+}
+.articleItem_title{
+    font-size: 23px;
+    font-weight: bold;
+    border-bottom: 2px solid #ddd;
+    height: 50px;
+    line-height: 50px;
+    padding: 10px 20px 5px;
+}
+.articleItem_title:hover{
+    background-color: #eee;
+    cursor: pointer;
+}
+.articleItem_content{
+    padding: 10px 20px 40px;
+    max-height: 370px;
+    overflow: hidden;
+}
+.articleItem_label{
+    background-image: url("../images/date_label.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 48px;
+    width:88px;
+    position: absolute;
+    left: -95px;
+    top: 5px;
+}
+.articleItem_label_date,.articleItem_label_monthYear{
+    color: white;
+    padding: 0px 5px 0px;
+    text-align: right;
+}
+.articleItem_label_date{
+    height: 30px;
+    line-height: 30px;
+    font-size: 19px;
+    font-weight: bold;
+}
+.articleItem_label_monthYear{
+    height: 15px;
+    line-height: 15px;
+    font-size: 13px;
+}
+
+/* Article Mask */
+#article{
+    height: 100%;
+    max-width: 900px;
+    min-width: 320px;
+    background-color: white;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    margin-top:0px;
+    margin-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    display: none;
+}
+#article .closeBtn{
+    background-image: url('../images/close_btn.png');
+    background-size: 60%;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    border: 1px solid lightgray;
+    border-radius: 50% 50%;
+    cursor: pointer;
+}
+.blog_addMore {
+    clear: both;
+    margin: 0 10px;
+    border-radius: 4px;
+    overflow: hidden;
+    text-align: center;
+    width: 794px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+.blog_addMore a {
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    background: #fff;
+    color: #333;
+}
+.blog_addMore span {
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    background: #888;
+    color: #fff;
+    display: none;
+}

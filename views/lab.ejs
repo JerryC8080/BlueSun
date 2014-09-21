@@ -1,0 +1,21 @@
+<%- include header.ejs%>
+<div id="main">
+    <ul class="labList">
+        <% for(var i = 0 ; i < articles.length ; i ++){%>
+            <li class="lab_item" data-entityId="<%=articles[i]._id%>">
+                <div class="lab_item_img" style="background-image:url('<%=articles[i].imgUrl%>')">
+                    <a href="<%=articles[i].url%>"></a>
+                </div>
+                <div class="lab_item_title">
+                    <a href="<%=articles[i].url%>">
+                        <%=articles[i].title%>
+                    </a>
+                </div>
+                <div class="lab_item_info">
+                    <p><%=articles[i].brief%></p>
+                </div>
+            </li>
+        <%}%>
+    </ul>
+</div>
+<%- include footer.ejs%>
