@@ -93,6 +93,18 @@
     .articleList{
         width: auto;
     }
+    .blog_addMore{
+        width:334px;
+    }
+    .ch-grid li {
+        width: 200px;
+        height: 200px;
+    }
+    .ch-info{
+        width:200px;
+        height:200px;
+        top:-20px;
+    }
 }
 @media screen and (max-width:680px) {
     .labList {

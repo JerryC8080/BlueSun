@@ -17,6 +17,9 @@
     var editor;
     KindEditor.ready(function(K){
         window.editor = K.create('textarea[name="content"]',{
+            uploadJson : '/JerryC_admin/upload/upload_json',
+            fileManagerJson : '/JerryC_admin/upload/file_manager_json',
+            allowFileManager : true,
             afterBlur: function(){this.sync();}
         });
     });

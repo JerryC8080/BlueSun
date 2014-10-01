@@ -14,7 +14,7 @@ module.exports = function(option,callback){
     model = option.model;
     filename = option.filename;
 
-    model.find({},function(err,articles){
+    model.find({}).sort({'_id': -1}).exec(function(err,articles){
         if(err) return callback(err);
         var articlesJSON = JSON.stringify(articles);
         var str = 'window.'+filename+'='+articlesJSON;

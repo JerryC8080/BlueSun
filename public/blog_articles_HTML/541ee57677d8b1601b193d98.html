@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- BaiDu -->
+    <script type="text/javascript">
+        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fb65b3ffc3fd0d14c968e1036793e631b' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+
+    <title>Blue Sun</title>
+    <style>
+        /* Blog Articles Template */
+        .article_title{
+            padding: 50px 20px 10px;
+            font-size: 30px;
+            font-weight: 400;
+
+            text-align: center;
+        }
+        .article_info >*{
+            display: inline;
+        }
+        .article_info{
+            color: #666;
+            display: block;
+            text-align: center;
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 20px;
+        }
+        .article_content{
+            padding: 40px 40px 50px
+        }
+        img{
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="article_title"> HTML、CSS、JS打造Windows桌面版《2048》</div>
+<div class="article_info">
+    <div class="article_info_date">时间：<span> 2014-9-21 22:49</span></div>
+    <div class="article_info_author">作者：<span> JerryC</span></div>
+</div>
+<div class="article_content">
+    <img id="aimg_JzMVh" class="zoom" src="/images/uploadImg/imgFile1412168354773.jpg" border="0" alt="" width="787" height="194" title="" align="" /><br />
+<br />
+<strong><span>前言：</span></strong><span style="color:#222222;font-family:verdana, 'Microsoft YaHei', Tahoma, sans-serif;font-size:14px;line-height:25.200000762939453px;background-color:#FFFFFF;"> </span><br />
+<br />
+<span style="color:#222222;font-family:verdana, 'Microsoft YaHei', Tahoma, sans-serif;font-size:14px;line-height:25.200000762939453px;background-color:#FFFFFF;">受益于Node的问世，Javascript终于能够挣脱浏览器这个条条框框的盒子。于是，Javascript能够开发服务器应用了。既然Javascript能够运行在操作系统中，那是否也能使用Javascript像C/C++开发那些个桌面应用呢。</span><br />
+<span style="color:#222222;font-family:verdana, 'Microsoft YaHei', Tahoma, sans-serif;font-size:14px;line-height:25.200000762939453px;background-color:#FFFFFF;">在Google一番之后，果然已经有高人实现了这个想法了。</span><br />
+<br />
+<span style="color:#222222;font-family:verdana, 'Microsoft YaHei', Tahoma, sans-serif;font-size:14px;line-height:25.200000762939453px;background-color:#FFFFFF;">Node-WebKit，把浏览器的布局引擎WebKit和Node.js结合了在一起。WebKit负责处理HTML5 UI相关的部分，而Node.js负责本地的API接口，比如文件系统，网络，设备等等。</span><br />
+<span style="color:#222222;font-family:verdana, 'Microsoft YaHei', Tahoma, sans-serif;font-size:14px;line-height:25.200000762939453px;background-color:#FFFFFF;">一个需要特别提醒的，Node-WebKit的开发维护者正是国内的王文睿大大，中国人啊，很自豪有木有！！但是项目文档好想没有中文版的，只是英文版的，这也许是要和国际接轨的原因吧。</span><br />
+<br />
+<span style="color:#222222;font-family:verdana, 'Microsoft YaHei', Tahoma, sans-serif;font-size:14px;line-height:25.200000762939453px;background-color:#FFFFFF;">项目地址：</span><a href="https://github.com/rogerwang/node-webkit" target="_blank">https://github.com/rogerwang/node-webkit</a><br />
+<br />
+<span style="color:#222222;font-family:verdana, 'Microsoft YaHei', Tahoma, sans-serif;font-size:14px;line-height:25.200000762939453px;background-color:#FFFFFF;">话不多说，我们撸起袖子，开始尝试一下使用前端技术开发桌面应用的乐趣吧。</span><br />
+<br />
+<br />
+<hr class="l" />
+<br />
+<span style="background-color:#FFFFFF;"><strong>Windows桌面版《2048》</strong></span><br />
+<br />
+<span style="background-color:#FFFFFF;"><strong>Step 1&nbsp; &nbsp; 准备材料</strong></span><br />
+<br />
+<span style="background-color:#FFFFFF;">1、node-webkit(本文使用v0.8.6-win版本):</span><br />
+<span style="background-color:#FFFFFF;">http://dl.node-webkit.org/v0.8.6/node-webkit-v0.8.6-win-ia32.zip</span><br />
+<br />
+<span style="color:#222222;font-family:verdana, 'Microsoft YaHei', Tahoma, sans-serif;font-size:14px;line-height:25.200000762939453px;background-color:#FFFFFF;">2、基于jQuery实现的2048游戏：</span><br />
+<a href="http://www.w3cfuns.com/blog-5446836-5399036.html" target="_blank">http://www.w3cfuns.com/blog-5446836-5399036.html</a><span style="color:#222222;font-family:verdana, 'Microsoft YaHei', Tahoma, sans-serif;font-size:14px;line-height:25.200000762939453px;background-color:#FFFFFF;">（原文地址）</span><br />
+<a href="https://github.com/JerryC8080/My2048" target="_blank">https://github.com/JerryC8080/My2048</a><span style="color:#222222;font-family:verdana, 'Microsoft YaHei', Tahoma, sans-serif;font-size:14px;line-height:25.200000762939453px;background-color:#FFFFFF;">（下载地址）</span><br />
+<br />
+<span style="color:#222222;font-family:verdana, 'Microsoft YaHei', Tahoma, sans-serif;font-size:14px;line-height:25.200000762939453px;background-color:#FFFFFF;">node-webkit的其他版本，在项目地址（</span><a href="https://github.com/rogerwang/node-webkit" target="_blank">https://github.com/rogerwang/node-webkit</a><span style="color:#222222;font-family:verdana, 'Microsoft YaHei', Tahoma, sans-serif;font-size:14px;line-height:25.200000762939453px;background-color:#FFFFFF;">）可以下载得到，不同操作系统是不同版本的。</span><br />
+<span style="color:#222222;font-family:verdana, 'Microsoft YaHei', Tahoma, sans-serif;font-size:14px;line-height:25.200000762939453px;background-color:#FFFFFF;">基于jQuery实现的2048游戏，是我之前做的一个小玩意，而这一次就完美移植到Windows桌面，哇嘎嘎嘎。</span><br />
+<br />
+<span style="color:#222222;font-family:verdana, 'Microsoft YaHei', Tahoma, sans-serif;font-size:14px;line-height:25.200000762939453px;background-color:#FFFFFF;">node-webkit下载并解压之后，如下：</span><br />
+<img id="aimg_e6zMg" class="zoom" src="/images/uploadImg/imgFile1412168419938.jpg" border="0" alt="" width="880" height="612" title="" align="" /><br />
+<br />
+<span style="color:#222222;font-family:verdana, 'Microsoft YaHei', Tahoma, sans-serif;font-size:14px;line-height:25.200000762939453px;background-color:#FFFFFF;">文件说明：</span><br />
+<span style="color:#222222;font-family:verdana, 'Microsoft YaHei', Tahoma, sans-serif;font-size:14px;line-height:25.200000762939453px;background-color:#FFFFFF;">nw.pak&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;--核心Javascript库</span><br />
+<span style="color:#222222;font-family:verdana, 'Microsoft YaHei', Tahoma, sans-serif;font-size:14px;line-height:25.200000762939453px;background-color:#FFFFFF;">incudt.dll&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; --网络库</span><br />
+<span style="color:#222222;font-family:verdana, 'Microsoft YaHei', Tahoma, sans-serif;font-size:14px;line-height:25.200000762939453px;background-color:#FFFFFF;">ffmpegsumo.dll&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; --媒体库，为、或者其他媒体功能提供支持</span><br />
+<span style="color:#222222;font-family:verdana, 'Microsoft YaHei', Tahoma, sans-serif;font-size:14px;line-height:25.200000762939453px;background-color:#FFFFFF;">libEGL.dll、libGLESv2.dll、D3DCompiler_43.dll、d3dx9_43.dll&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; --该四个dll，为WebGL、GPU、DirectX提供支持</span><br />
+<br />
+<span style="color:#222222;font-family:verdana, 'Microsoft YaHei', Tahoma, sans-serif;font-size:14px;line-height:25.200000762939453px;background-color:#FFFFFF;">基于jQuery实现的2048游戏下载并解压之后，如下：</span><br />
+<img id="aimg_s0img" class="zoom" src="/images/uploadImg/imgFile1412168441331.jpg" border="0" alt="" width="880" height="612" title="" align="" /><br />
+<br />
+<br />
+<br />
+<strong><span>Step 2&nbsp; &nbsp; 编写package.json文件</span></strong><br />
+<br />
+<span style="color:#222222;font-family:verdana, 'Microsoft YaHei', Tahoma, sans-serif;font-size:14px;line-height:25.200000762939453px;background-color:#FFFFFF;">在《2048》游戏的目录，新建一个package.json文件，输入内容：</span><br />
+<div class="blockcode" style="margin:10px 0px;padding:10px 0px 5px 10px;font-family:verdana, 'Microsoft YaHei', Tahoma, sans-serif;color:#666666;border:1px solid #CCCCCC;font-size:14px;background:url(http://cdn.w3cfuns.com/resource/images/codebg.gif) 0px 0px repeat-y #F7F7F7;">
+	<div id="code_g14" style="margin:0px;padding:0px;">
+		<ol>
+			<li style="font-family:Monaco, Consolas, 'Lucida Console', 'Courier New', serif;font-size:12px;">
+				{<br />
+			</li>
+			<li style="font-family:Monaco, Consolas, 'Lucida Console', 'Courier New', serif;font-size:12px;">
+				"name": "MyDemo",<br />
+			</li>
+			<li style="font-family:Monaco, Consolas, 'Lucida Console', 'Courier New', serif;font-size:12px;">
+				"main": "index.html",<br />
+			</li>
+			<li style="font-family:Monaco, Consolas, 'Lucida Console', 'Courier New', serif;font-size:12px;">
+				"window": {<br />
+			</li>
+			<li style="font-family:Monaco, Consolas, 'Lucida Console', 'Courier New', serif;font-size:12px;">
+				"toolbar": false,<br />
+			</li>
+			<li style="font-family:Monaco, Consolas, 'Lucida Console', 'Courier New', serif;font-size:12px;">
+				"resizable": false,<br />
+			</li>
+			<li style="font-family:Monaco, Consolas, 'Lucida Console', 'Courier New', serif;font-size:12px;">
+				"width": 660,<br />
+			</li>
+			<li style="font-family:Monaco, Consolas, 'Lucida Console', 'Courier New', serif;font-size:12px;">
+				"height": 800<br />
+			</li>
+			<li style="font-family:Monaco, Consolas, 'Lucida Console', 'Courier New', serif;font-size:12px;">
+				}<br />
+			</li>
+			<li style="font-family:Monaco, Consolas, 'Lucida Console', 'Courier New', serif;font-size:12px;">
+				}
+			</li>
+		</ol>
+	</div>
+<span style="font-size:12px;color:#336699 !important;">复制代码</span> 
+</div>
+<img id="aimg_W3A6Y" class="zoom" src="/images/uploadImg/imgFile1412168471850.jpg" border="0" alt="" width="880" height="612" title="" align="" /><br />
+<br />
+<br />
+<br />
+<span style="background-color:#FFFFFF;"><strong>Step 3&nbsp; &nbsp; 压缩源程序</strong></span><br />
+<br />
+<span style="color:#222222;font-family:verdana, 'Microsoft YaHei', Tahoma, sans-serif;font-size:14px;line-height:25.200000762939453px;background-color:#FFFFFF;">我们使用压缩工具，把已经编写好的../My2048-master目录里面的内容压缩。</span><br />
+<span style="color:#222222;font-family:verdana, 'Microsoft YaHei', Tahoma, sans-serif;font-size:14px;line-height:25.200000762939453px;background-color:#FFFFFF;">压缩需要注意的两点：</span><br />
+<span style="color:#222222;font-family:verdana, 'Microsoft YaHei', Tahoma, sans-serif;font-size:14px;line-height:25.200000762939453px;background-color:#FFFFFF;">1、压缩格式要为zip；</span><br />
+<span style="color:#222222;font-family:verdana, 'Microsoft YaHei', Tahoma, sans-serif;font-size:14px;line-height:25.200000762939453px;background-color:#FFFFFF;">2、文件后缀名要为.nw；</span><br />
+<span style="color:#222222;font-family:verdana, 'Microsoft YaHei', Tahoma, sans-serif;font-size:14px;line-height:25.200000762939453px;background-color:#FFFFFF;">如图：</span><br />
+<img id="aimg_gtw1o" class="zoom" src="/images/uploadImg/imgFile1412168511771.jpg" border="0" alt="" width="460" height="415" title="" align="" /><br />
+<br />
+<br />
+<span style="color:#222222;font-family:verdana, 'Microsoft YaHei', Tahoma, sans-serif;font-size:14px;line-height:25.200000762939453px;background-color:#FFFFFF;">压缩完成</span><br />
+<img id="aimg_PY63u" class="zoom" src="/images/uploadImg/imgFile1412168553899.jpg" border="0" alt="" width="880" height="612" title="" align="" /><br />
+<br />
+<br />
+<br />
+<strong><span>Step 4&nbsp; &nbsp; 预览</span></strong><br />
+<br />
+<span style="color:#222222;font-family:verdana, 'Microsoft YaHei', Tahoma, sans-serif;font-size:14px;line-height:25.200000762939453px;background-color:#FFFFFF;">把压缩好的 My2048-master.nw 文件复制到node-webkit目录：</span><br />
+<img id="aimg_aE9eS" class="zoom" src="/images/uploadImg/imgFile1412168592404.jpg" border="0" alt="" width="880" height="612" title="" align="" /><br />
+<br />
+<br />
+<span style="color:#222222;font-family:verdana, 'Microsoft YaHei', Tahoma, sans-serif;font-size:14px;line-height:25.200000762939453px;background-color:#FFFFFF;">运行cmd，</span><br />
+<span style="color:#222222;font-family:verdana, 'Microsoft YaHei', Tahoma, sans-serif;font-size:14px;line-height:25.200000762939453px;background-color:#FFFFFF;">移动到node-webkit所在的目录： cd + node-webkit所在的路径</span><br />
+<span style="color:#222222;font-family:verdana, 'Microsoft YaHei', Tahoma, sans-serif;font-size:14px;line-height:25.200000762939453px;background-color:#FFFFFF;">运行命令：nw My2048-master.nw</span><br />
+<img id="aimg_yV7iT" class="zoom" src="/images/uploadImg/imgFile1412168834596.jpg" border="0" alt="" width="677" height="443" title="" align="" /><br />
+<br />
+<br />
+<span style="color:#222222;font-family:verdana, 'Microsoft YaHei', Tahoma, sans-serif;font-size:14px;line-height:25.200000762939453px;background-color:#FFFFFF;">便能看到预览效果了</span><br />
+<img id="aimg_Mh7Br" class="zoom" src="/images/uploadImg/imgFile1412168728769.jpg" border="0" alt="" width="676" height="768" title="" align="" /><br />
+<br />
+<br />
+<br />
+<span style="background-color:#FFFFFF;"><strong>Step 5&nbsp; &nbsp; 生成exe执行文件</strong></span><br />
+<br />
+<span style="color:#222222;font-family:verdana, 'Microsoft YaHei', Tahoma, sans-serif;font-size:14px;line-height:25.200000762939453px;background-color:#FFFFFF;">依然在node-webkit的目录下</span><br />
+<span style="color:#222222;font-family:verdana, 'Microsoft YaHei', Tahoma, sans-serif;font-size:14px;line-height:25.200000762939453px;background-color:#FFFFFF;">运行命令：</span><span><span><span>copy /b nw.exe+My2048-master.nw My2048.exe</span></span></span><br />
+<span><span><span><img id="aimg_Hg7JL" class="zoom" src="/images/uploadImg/imgFile1412168608341.jpg" border="0" alt="" width="677" height="443" title="" align="" /></span></span></span><br />
+<span><span><span><br />
+</span></span></span><br />
+<span style="background-color:#FFFFFF;"><span><span>OK，我们可以看到node-webkit目录下多了一个My2048.exe的执行文件，我们点解它运行看看效果：</span></span></span><br />
+<span style="background-color:#FFFFFF;"><span><span><img id="aimg_DOTZC" class="zoom" src="/images/uploadImg/imgFile1412168871884.jpg" border="0" alt="" width="880" height="612" title="" align="" /><br />
+<br />
+<img id="aimg_OxKxO" class="zoom" src="/images/uploadImg/imgFile1412168728769.jpg" border="0" alt="" width="676" height="768" title="" align="" /><br />
+</span></span></span><br />
+<span style="background-color:#FFFFFF;"><span><span><br />
+</span></span></span><br />
+<strong><span>Step 6&nbsp; &nbsp; 打包程序</span></strong><br />
+<br />
+<span style="color:#222222;font-family:verdana, 'Microsoft YaHei', Tahoma, sans-serif;font-size:14px;line-height:25.200000762939453px;background-color:#FFFFFF;">如果想把这个程序发给朋友，除了.exe文件之外，还需要包括另外两个必要的文件:</span><br />
+<span style="color:#222222;font-family:verdana, 'Microsoft YaHei', Tahoma, sans-serif;font-size:14px;line-height:25.200000762939453px;background-color:#FFFFFF;">icudt.dll(必要网络库)、</span><br />
+<span style="color:#222222;font-family:verdana, 'Microsoft YaHei', Tahoma, sans-serif;font-size:14px;line-height:25.200000762939453px;background-color:#FFFFFF;">nw.pak(核心javascript库)</span><br />
+<br />
+<span style="color:#222222;font-family:verdana, 'Microsoft YaHei', Tahoma, sans-serif;font-size:14px;line-height:25.200000762939453px;background-color:#FFFFFF;">这两个是最基本的文件，如果程序还包含了其他功能，还需要包含相对应的dll文件，各个文件功能说明文章开始已经说明了。</span><br />
+<br />
+<span style="color:#222222;font-family:verdana, 'Microsoft YaHei', Tahoma, sans-serif;font-size:14px;line-height:25.200000762939453px;background-color:#FFFFFF;">所以，我们得到了最基本的发布版了：</span><br />
+<img id="aimg_t2wyJ" class="zoom" src="/images/uploadImg/imgFile1412168908105.jpg" border="0" alt="" width="880" height="612" title="" align="" />
+</div>
+</body>
+</html>

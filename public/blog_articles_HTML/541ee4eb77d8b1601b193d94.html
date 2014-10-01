@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- BaiDu -->
+    <script type="text/javascript">
+        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fb65b3ffc3fd0d14c968e1036793e631b' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+
+    <title>Blue Sun</title>
+    <style>
+        /* Blog Articles Template */
+        .article_title{
+            padding: 50px 20px 10px;
+            font-size: 30px;
+            font-weight: 400;
+
+            text-align: center;
+        }
+        .article_info >*{
+            display: inline;
+        }
+        .article_info{
+            color: #666;
+            display: block;
+            text-align: center;
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 20px;
+        }
+        .article_content{
+            padding: 40px 40px 50px
+        }
+        img{
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="article_title"> JQuery动画反方向延伸</div>
+<div class="article_info">
+    <div class="article_info_date">时间：<span> 2014-9-21 22:47</span></div>
+    <div class="article_info_author">作者：<span> JerryC</span></div>
+</div>
+<div class="article_content">
+    <p style="font-family:Arial;font-size:14px;background-color:#FFFFFF;">
+	Jquery的动画效果都是从左到右，从上到下延伸的。如果要实现反方向延伸呢？
+</p>
+<p style="font-family:Arial;font-size:14px;background-color:#FFFFFF;">
+	以下代码实现动画从右到左延伸，读者可以举一反三实现从下往上延伸的动画。
+</p>
+<p style="font-family:Arial;font-size:14px;background-color:#FFFFFF;">
+	CSS：
+</p>
+<div class="dp-highlighter bg_css" style="font-family:Consolas, 'Courier New', Courier, mono, serif;margin:18px 0px !important;background:url(http://static.blog.csdn.net/scripts/SyntaxHighlighter/styles/images/css.gif) 100% 0% no-repeat #FFFFFF;">
+	<div class="bar">
+		<div class="tools" style="padding:3px 8px 10px 10px;font-size:9px;font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;color:silver;">
+			<b>[css]</b>&nbsp;<a href="http://blog.csdn.net/bluesun88/article/details/9402057#" class="ViewSource">view plain</a><a href="http://blog.csdn.net/bluesun88/article/details/9402057#" class="CopyToClipboard">copy</a><a href="http://blog.csdn.net/bluesun88/article/details/9402057#" class="PrintSource">print</a><a href="http://blog.csdn.net/bluesun88/article/details/9402057#" class="About">?</a>
+			<div>
+			</div>
+		</div>
+	</div>
+	<ol class="dp-css" style="color:#5C5C5C;">
+		<li class="alt" style="color:inherit;">
+			<span style="color:black;background-color:inherit;"><span class="value" style="background-color:inherit;">#bar</span><span style="background-color:inherit;">&nbsp;{&nbsp;&nbsp;</span></span>
+		</li>
+		<li class="">
+			<span style="color:black;background-color:inherit;">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword" style="color:#006699;font-weight:bold;background-color:inherit;">margin-left</span><span style="background-color:inherit;">:&nbsp;</span><span class="value" style="background-color:inherit;">100px</span><span style="background-color:inherit;">;&nbsp;&nbsp;</span></span>
+		</li>
+		<li class="alt" style="color:inherit;">
+			<span style="color:black;background-color:inherit;">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword" style="color:#006699;font-weight:bold;background-color:inherit;">height</span><span style="background-color:inherit;">:&nbsp;</span><span class="value" style="background-color:inherit;">10px</span><span style="background-color:inherit;">;&nbsp;&nbsp;</span></span>
+		</li>
+		<li class="">
+			<span style="color:black;background-color:inherit;">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword" style="color:#006699;font-weight:bold;background-color:inherit;">width</span><span style="background-color:inherit;">:&nbsp;</span><span class="value" style="background-color:inherit;">0</span><span style="background-color:inherit;">;&nbsp;&nbsp;</span></span>
+		</li>
+		<li class="alt" style="color:inherit;">
+			<span style="color:black;background-color:inherit;">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword" style="color:#006699;font-weight:bold;background-color:inherit;">background</span><span style="background-color:inherit;">:&nbsp;</span><span class="value" style="background-color:inherit;">red</span><span style="background-color:inherit;">;&nbsp;&nbsp;</span></span>
+		</li>
+		<li class="">
+			<span style="color:black;background-color:inherit;">}&nbsp;&nbsp;</span>
+		</li>
+	</ol>
+</div>
+<span style="font-family:Arial;font-size:14px;line-height:26px;background-color:#FFFFFF;">jQuery</span>
+<div class="dp-highlighter bg_javascript" style="font-family:Consolas, 'Courier New', Courier, mono, serif;margin:18px 0px !important;background:url(http://static.blog.csdn.net/scripts/SyntaxHighlighter/styles/images/javascript.gif) 100% 0% no-repeat #FFFFFF;">
+	<div class="bar">
+		<div class="tools" style="padding:3px 8px 10px 10px;font-size:9px;font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;color:silver;">
+			<b>[javascript]</b>&nbsp;<a href="http://blog.csdn.net/bluesun88/article/details/9402057#" class="ViewSource">view plain</a><a href="http://blog.csdn.net/bluesun88/article/details/9402057#" class="CopyToClipboard">copy</a><a href="http://blog.csdn.net/bluesun88/article/details/9402057#" class="PrintSource">print</a><a href="http://blog.csdn.net/bluesun88/article/details/9402057#" class="About">?</a>
+			<div>
+			</div>
+		</div>
+	</div>
+	<ol class="dp-c" style="color:#5C5C5C;">
+		<li class="alt" style="color:inherit;">
+			<span style="color:black;background-color:inherit;"><span style="background-color:inherit;">$(</span><span class="string" style="color:blue;background-color:inherit;">'#bar'</span><span style="background-color:inherit;">).animate({&nbsp;&nbsp;</span></span>
+		</li>
+		<li class="">
+			<span style="color:black;background-color:inherit;">&nbsp;&nbsp;&nbsp;&nbsp;marginLeft:&nbsp;0,&nbsp;&nbsp;</span>
+		</li>
+		<li class="alt" style="color:inherit;">
+			<span style="color:black;background-color:inherit;">&nbsp;&nbsp;&nbsp;&nbsp;width:&nbsp;100&nbsp;&nbsp;</span>
+		</li>
+		<li class="">
+			<span style="color:black;background-color:inherit;">});&nbsp;&nbsp;</span>
+		</li>
+		<li>
+		</li>
+	</ol>
+</div>
+</div>
+</body>
+</html>

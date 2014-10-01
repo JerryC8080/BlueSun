@@ -87,7 +87,7 @@
                 <td>Only One Key</td>
                 <td>There is no limit, all stations generate HTML</td>
                 <td class="button">
-                    <button disabled=disabled type="button" class="modify-btn btn btn-danger" onclick="javascript:void(0);">Excute</button>
+                    <button type="button" class="modify-btn btn btn-danger" onclick="javascript:allStaticize();">Excute</button>
                 </td>
             </tr>
             </tbody>
@@ -105,6 +105,28 @@ function staticize(url){
         success:function(data){
             if(data == 'success') alert('操作成功');
             else alert('操作失败');
+        }
+    });
+}
+function allStaticize(){
+    var array = new Array();
+    array.push(sendAjax('admin_blog_articles_staticize'));
+    array.push(sendAjax('admin_notes_articles_staticize'));
+    array.push(sendAjax('admin_blog_data_create'));
+    array.push(sendAjax('admin_notes_data_create'));
+    array.push(sendAjax('admin_index_staticize'));
+    array.push(sendAjax('admin_blog_staticize'));
+    array.push(sendAjax('admin_lab_staticize'));
+    array.push(sendAjax('admin_notes_staticize'));
+}
+function sendAjax(url){
+    var status;
+    $.ajax({
+        url:url,
+        type:'post',
+        dataType:'json',
+        data:{},
+        success:function(data){
         }
     });
 }

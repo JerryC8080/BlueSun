@@ -8,6 +8,7 @@ var session  = require('cookie-session');
 var flash = require('connect-flash');
 var http = require('http');
 var mongoose = require('mongoose');
+var multer = require('multer');
 
 var DBsettings = require('./DBsettings');
 var routes = require('./routes/index');
@@ -35,8 +36,17 @@ app.set('port', process.env.PORT || 3000);
 //  connect内建的中间件，在开发环境下使用，在终端显示简单的日志
 app.use(logger('dev'));
 
+//  设置body的解析
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+//  设置上传文件的参数
+app.use(multer({
+    dest:'public/images/uploadImg/',
+    rename: function (fieldname, filename) {
+        return fieldname + Date.now();
+    }
+}));
 
 //  Cookie解析的中间件
 app.use(cookieParser());

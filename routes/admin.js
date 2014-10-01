@@ -10,6 +10,7 @@ var blogArticles = require('../models/blogArticles');
 var labArticles = require('../models/labArticles');
 var noteArticles = require('../models/notesArticles');
 var createData = require('../utils/create-data');
+var fs = require('fs');
 
 // 控制访问权限的函数
 function checkLogin(req,res,next){
@@ -82,7 +83,7 @@ router.get('/admin_right',function(req,res){
 //  Blog List
 router.get('/admin_blog_list',checkLogin);
 router.get('/admin_blog_list',function(req,res){
-    blogArticles.find(function(err,articles){
+    blogArticles.find().sort({'_id':-1}).exec(function(err,articles){
         if(err)return console.log(err);
         res.render('admin/admin_blog_list',{
             title:'Blue Sun',
@@ -122,7 +123,7 @@ router.post('/admin_blog_add',function(req,res){
 router.post('/admin_blog_modify',checkLogin);
 router.post('/admin_blog_modify',function(req,res){
     var id = req.body.id;
-        title = req.body.title,
+    title = req.body.title,
         author = req.body.author,
         brief = req.body.brief,
         content = req.body.content;
@@ -157,7 +158,7 @@ router.post('/admin_blog_delete',function(req,res){
 //  Lab List
 router.get('/admin_lab_list',checkLogin);
 router.get('/admin_lab_list',function(req,res){
-    labArticles.find(function(err,articles){
+    labArticles.find().sort({'_id':-1}).exec(function(err,articles){
         if(err)return console.log(err);
         res.render('admin/admin_lab_list',{
             title:'Blue Sun',
@@ -200,7 +201,7 @@ router.post('/admin_lab_add',function(req,res){
 router.post('/admin_lab_modify',checkLogin);
 router.post('/admin_lab_modify',function(req,res){
     var id = req.body.id;
-        title = req.body.title,
+    title = req.body.title,
         author = req.body.author,
         brief = req.body.brief,
         url = req.body.url,
@@ -365,14 +366,11 @@ router.post('/admin_index_staticize',function(req,res){
 //  Blog Staticize
 router.post('/admin_blog_staticize',checkLogin);
 router.post('/admin_blog_staticize',function(req,res){
-
-
-    blogArticles.find({}).limit(10).exec(function(err,articles){
+    blogArticles.find({}).sort({'_id':-1}).limit(10).exec(function(err,articles){
         if(err){
             res.json('error');
             return console.log(err);
         }
-        console.log('articles.length:'+articles.length);
 
         var option = {
             savepath:'public/',
@@ -393,7 +391,7 @@ router.post('/admin_blog_staticize',function(req,res){
 router.post('/admin_lab_staticize',checkLogin);
 router.post('/admin_lab_staticize',function(req,res){
 
-    labArticles.find({},function(err,articles){
+    labArticles.find({}).sort({'_id':-1}).exec(function(err,articles){
         if(err){
             res.json('error');
             return console.log(err);
@@ -420,7 +418,7 @@ router.post('/admin_lab_staticize',function(req,res){
 router.post('/admin_notes_staticize',checkLogin);
 router.post('/admin_notes_staticize',function(req,res){
 
-    noteArticles.find({}).limit(10).exec(function(err,articles){
+    noteArticles.find({}).sort({'_id':-1}).limit(10).exec(function(err,articles){
         if(err){
             res.json('error');
             return console.log(err);
@@ -479,4 +477,48 @@ router.post('/admin_all_staticize',checkLogin);
 router.post('/admin_all_staticize',function(req,res){
 
 });
+
+//  Files Upload
+router.post('/upload/upload_json',checkLogin);
+router.post('/upload/upload_json',function(req,res){
+    var path = req.files.imgFile.path;
+    path = path.replace('public','..');
+    console.log('fuck:'+path);
+    res.json({
+        "error":0,
+        "url":path
+    });
+});
+
+//  Files Manager
+router.get('/upload/file_manager_json',checkLogin);
+router.get('/upload/file_manager_json',function(req,res){
+    console.log('Here is file_manager_json');
+    fs.readdir(process.cwd()+'\\public\\images\\uploadImg',function(err,files){
+        var fileList = new Array();
+        var result = {};
+        for(var i = 0 ; i < files.length ; i++){
+            pushfile({},files[i],fileList);
+        }
+
+        result.moveup_dir_path = '';
+        result.current_dir_path = '';
+        result.current_url = '../images/uploadImg/';
+        result.total_count = files.length;
+        result.file_list = fileList;
+        res.json(result);
+    });
+
+    function pushfile(file , files , fileList){
+            file.is_dir = false;
+            file.has_file = false;
+            file.filesize = '';
+            file.is_photo = true;
+            file.filetype = 'jpg';
+            file.filename = files.toString();
+            file.datetime = '';
+            fileList.push(file);
+    }
+});
+
 module.exports = router;

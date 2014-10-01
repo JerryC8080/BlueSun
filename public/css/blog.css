@@ -21,6 +21,7 @@
     height: 50px;
     line-height: 50px;
     padding: 10px 20px 5px;
+    overflow: hidden;
 }
 .articleItem_title:hover{
     background-color: #eee;
