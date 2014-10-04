@@ -30,8 +30,8 @@
         position:fixed;
         right:20px;
         bottom:20px;
-        width:70px;
-        height:70px;
+        width:60px;
+        height:60px;
         line-height:40px;
         list-style-type:none;
         marign:0;
@@ -56,37 +56,42 @@
         transition:all .5s;
     }
     #nav_arc>ul:after {
-        content:'';
+        content: "\e606";
         z-index:1;
         position: absolute;
         background-size: 85%;
         background-color:darkgray;
-        background-image: url("../images/arc_menu.png");
+        font-family: 'icomoon';
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        font-size:33px;
+        display: inline-block;
+        text-align: center;
+        line-height: 60px;
+        color: black;
+
+        /* Better Font Rendering =========== */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
     }
     #nav_arc ul {
         border-radius:50%;
         z-index:101;
-    }
-    #nav_arc li.arc_home {
-        background-image: url("../images/arc_home.png");
-    }
-    #nav_arc li.arc_blog {
-        background-image: url("../images/arc_blog.png");
-    }
-    #nav_arc li.arc_notes {
-        background-image: url("../images/arc_notes.png");
-    }
-    #nav_arc li.arc_lab {
-        background-image: url("../images/arc_lab.png");
-    }
-    #nav_arc li.arc_me {
-        background-image: url("../images/arc_me.png");
     }
     #nav_arc a{
         height: 100%;
         width: 100%;
         display: block;
     }
+    #nav_arc [class^="icon-"], #nav_arc [class*=" icon-"]{
+        line-height: 60px;
+        color: black;
+        font-size: 33px;
+    }
+    .github-link{left:0}
 }
 
 @media screen and (max-width:794px){
