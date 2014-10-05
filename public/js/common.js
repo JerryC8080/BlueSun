@@ -119,13 +119,15 @@ $(function(){
    });
 });
 
-
+/* Background Image auto change*/
 $(function(){
-   /* var me = $('.arc_me');
-    var notes = $('.arc_notes');
-    me.css({
-        top:-100
-    });
-
-    //alert(me.show());*/
+    var imgArray = new Array();
+    var date = new Date();
+    var $bg = $('#bg');
+    var currentIndex = date.getDate()%8;
+    for(var i = 0 ; i < 8 ; i++){
+        imgArray.push('bg_'+i+'.jpg');
+    }
+    $bg.css('background-image','url(\'../images/'+imgArray[currentIndex]+'\')');
+    $bg.show();
 });
