@@ -1,7 +1,6 @@
-BlueSun
+BlueSun ###Personal Blog###
 =======
-Personal Blog
--------
+
 
 -----
 
