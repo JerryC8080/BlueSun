@@ -4,6 +4,7 @@
 var express = require('express');
 var router = express.Router();
 var crypto = require('crypto');
+var Markdown = require("markdown").markdown;
 var ejsStatic = require('../utils/ejs-static');
 var Admin = require('../models/admin');
 var blogArticles = require('../models/blogArticles');
@@ -104,12 +105,15 @@ router.post('/admin_blog_add',function(req,res){
     var title = req.body.title,
         author = req.body.author,
         brief = req.body.brief,
-        content = req.body.content;
+        content = req.body.content,
+        markdown = req.body.markdown;
     var blogArticle = new blogArticles({
         title:title,
         author:author,
         brief:brief,
-        content:content
+        content:content,
+        markdown:markdown,
+        html:Markdown.toHTML(markdown)
     });
     blogArticle.save(function(err){
         if(err) return console.log(err);

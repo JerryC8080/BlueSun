@@ -5,10 +5,12 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var BlogArticles = mongoose.model('BlogArticles',new Schema({
-    title:String,
-    author:String,
-    brief:String,
-    content:String,
+    title   :String,
+    author  :String,
+    brief   :String,
+    content :String,
+    markdown:String,
+    html    :String,
     lastUpdateTime:{
         date:Date,
         year:String,

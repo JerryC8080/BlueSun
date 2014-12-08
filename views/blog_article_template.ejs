@@ -39,9 +39,16 @@
     <div class="article_info_date">时间：<span> <%=article.createTime.minute%></span></div>
     <div class="article_info_author">作者：<span> <%=article.author%></span></div>
 </div>
-<div class="article_content">
-    <%-article.content%>
-</div>
+<% if (article.html){%>
+    <link href="../css/github.css" rel="stylesheet">
+    <div class="article_content">
+        <%-article.html%>
+    </div>
+<% }else {%>
+    <div class="article_content">
+        <%-article.content%>
+    </div>
+<%}%>
 
 <!-- BaiDu -->
 <script type="text/javascript">
