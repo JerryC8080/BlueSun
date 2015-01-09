@@ -52,7 +52,8 @@ app.use(multer({
 app.use(cookieParser());
 
 //  connect内建的中间件，将根目录下的public文件夹设置为存放image、css、js等静态文件的目录
-app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'BlueSunIO')));
 
 //  使用session中间件
 app.use(session({
