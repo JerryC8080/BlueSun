@@ -12,6 +12,7 @@ var labArticles = require('../models/labArticles');
 var noteArticles = require('../models/notesArticles');
 var createData = require('../utils/create-data');
 var fs = require('fs');
+var config = require("../config.js");
 
 // 控制访问权限的函数
 function checkLogin(req,res,next){
@@ -326,7 +327,7 @@ router.get('/admin_web_tools',function(req,res){
 router.post('/admin_blog_articles_staticize',checkLogin);
 router.post('/admin_blog_articles_staticize',function(req,res){
     var option = {
-        savepath:'public/blog_articles_HTML/',
+        savepath:config.static_path + '/blog_articles_HTML/',
         templatename:'blog_article_template.ejs',
         templatepath:'./views/',
         model:blogArticles
@@ -341,7 +342,7 @@ router.post('/admin_blog_articles_staticize',function(req,res){
 router.post('/admin_notes_articles_staticize',checkLogin);
 router.post('/admin_notes_articles_staticize',function(req,res){
     var option = {
-        savepath:'public/notes_articles_HTML/',
+        savepath:config.static_path + 'notes_articles_HTML/',
         templatename:'notes_article_template.ejs',
         templatepath:'./views/',
         model:noteArticles
@@ -356,7 +357,7 @@ router.post('/admin_notes_articles_staticize',function(req,res){
 router.post('/admin_index_staticize',checkLogin);
 router.post('/admin_index_staticize',function(req,res){
     var option = {
-        savepath:'public/',
+        savepath: config.static_path + '/',
         templatename:'index.ejs',
         templatepath:'views/',
         filename:'index.html'
@@ -377,7 +378,7 @@ router.post('/admin_blog_staticize',function(req,res){
         }
 
         var option = {
-            savepath:'public/',
+            savepath:config.static_path + '/',
             templatename:'blog.ejs',
             templatepath:'views/',
             filename:'blog.html',
@@ -403,7 +404,7 @@ router.post('/admin_lab_staticize',function(req,res){
         articles.sort('createTime',-1);
 
         var option = {
-            savepath:'public/',
+            savepath:config.static_path + '/',
             templatename:'lab.ejs',
             templatepath:'views/',
             filename:'lab.html',
@@ -430,7 +431,7 @@ router.post('/admin_notes_staticize',function(req,res){
         articles.sort('createTime',-1);
 
         var option = {
-            savepath:'public/',
+            savepath:config.static_path + '/',
             templatename:'notes.ejs',
             templatepath:'views/',
             filename:'notes.html',
@@ -448,7 +449,7 @@ router.post('/admin_notes_staticize',function(req,res){
 router.post('/admin_blog_data_create',checkLogin);
 router.post('/admin_blog_data_create',function(req,res){
     createData({
-        savepath:'public/data',
+        savepath:config.static_path + '/data',
         filename:'blogArticles',
         model:blogArticles
     },function(err){
@@ -464,7 +465,7 @@ router.post('/admin_blog_data_create',function(req,res){
 router.post('/admin_notes_data_create',checkLogin);
 router.post('/admin_notes_data_create',function(req,res){
     createData({
-        savepath:'public/data',
+        savepath:config.static_path + '/data',
         filename:'notesArticles',
         model:noteArticles
     },function(err){
